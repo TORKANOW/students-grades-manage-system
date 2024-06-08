@@ -46,26 +46,26 @@ void statistics();
 void inputstudentmessage() {
     int num_students;
 
-    printf("Enter the number of students: ");
+    printf("输入学生人数: ");
     scanf("%d", &num_students);
     getchar(); 
 
     for (int i = 0; i < num_students; i++) {
         Student student;
 
-        printf("Enter the name of student %d: ", i + 1);
+        printf("学生%d姓名: ", i + 1);
         scanf("%c", student.name);
 
-        printf("Enter the student id of student %d: ", i + 1);
+        printf("学生%d学号: ", i + 1);
         scanf("%d", &student.id);
 
-        printf("Enter the grades of student %d (CH EN MA): ", i + 1);
+        printf("学生%d 成绩(语 英 数): ", i + 1);
         scanf("%d %d %d", &student.CH_grade, &student.EN_grade, &student.MA_grade);
         getchar(); 
 
         studentInfo[studentInfo_count++] = student;
 
-        printf("Student information recorded: Name: %s, ID: %d, CH: %d, EN: %d, MA: %d\n",
+        printf("学生信息已记录: 姓名: %s, 学号: %d, 语文: %d, 英语: %d, 数学: %d\n",
                student.name, student.id, student.CH_grade, student.EN_grade, student.MA_grade);
     }
 }
@@ -136,7 +136,7 @@ void menu_2_teacher() {
 void showstudentsmessage() {
     printf("显示所有学生信息:\n");
     for (int i = 0; i < studentInfo_count; i++) {
-        printf("Name: %s, ID: %d, CH: %d, EN: %d, MA: %d\n",
+        printf("姓名: %s, 学号: %d, 语文: %d, 英语: %d, 数学: %d\n",
                studentInfo[i].name, studentInfo[i].id,
                studentInfo[i].CH_grade, studentInfo[i].EN_grade, studentInfo[i].MA_grade);
     }
@@ -145,7 +145,7 @@ void showstudentsmessage() {
 
 void delete_student_info() {
     int id;
-    printf("Enter student ID to delete: ");
+    printf("输入学生学号删除该学生成绩信息: ");
     scanf("%d", &id);
 
     for (int i = 0; i < studentInfo_count; i++) {
@@ -154,20 +154,20 @@ void delete_student_info() {
                 studentInfo[j] = studentInfo[j + 1];
             }
             studentInfo_count--;
-            printf("Student information deleted.\n");
+            printf("该学生成绩信息已清除！\n");
             return;
         }
     }
-    printf("Student ID not found.\n");
+    printf("未找到该学生\n");
     return;
 }
 
 void sort_student_info() {
     int choice;
-    printf("Sort by:\n");
-    printf("1. CH grade\n");
-    printf("2. EN grade\n");
-    printf("3. MA grade\n");
+    printf("按那种方式排序:\n");
+    printf("1. 按语文成绩从高到低排序\n");
+    printf("2. 按英语成绩从高到低排序\n");
+    printf("3. 按数学成绩从高到低排序\n");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -270,18 +270,18 @@ void statistics() {
     avg_MA = (float)total_MA / studentInfo_count;
 
     printf("学生成绩统计:\n");
-    printf("CH平均分: %.2f, EN平均分: %.2f, MA平均分: %.2f\n", avg_CH, avg_EN, avg_MA);
+    printf("语文平均分: %.2f, 英语平均分: %.2f, 数学平均分: %.2f\n", avg_CH, avg_EN, avg_MA);
     return;
 }
 
 void register_user(User users[], int *count, const char *user_type) {
     User user;
 
-    printf("Enter %s ID: ", user_type);
+    printf("输入 %s工号: ", user_type);
     scanf("%d", &user.id);
     getchar(); 
 
-    printf("Enter %s password: ", user_type);
+    printf("输入 %s 密码: ", user_type);
     fgets(user.password, sizeof(user.password), stdin);
     strtok(user.password, "\n");
 
@@ -307,7 +307,7 @@ int login_user(User users[], int count, const char *user_type) {
             return 1;
         }
     }
-    printf("用户ID或密码错误。\n");
+    printf("教师工号或密码错误。\n");
     return 0;
 }
 
