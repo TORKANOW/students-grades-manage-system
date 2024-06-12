@@ -54,7 +54,7 @@ void inputstudentmessage() {
         Student student;
 
         printf("学生%d姓名: ", i + 1);
-        scanf("%c", student.name);
+        scanf("%s", student.name);
 
         printf("学生%d学号: ", i + 1);
         scanf("%d", &student.id);
@@ -277,7 +277,7 @@ void statistics() {
 void register_user(User users[], int *count, const char *user_type) {
     User user;
 
-    printf("输入 %s工号: ", user_type);
+    printf("输入 %s 工号: ", user_type);
     scanf("%d", &user.id);
     getchar(); 
 
@@ -293,11 +293,11 @@ void register_user(User users[], int *count, const char *user_type) {
 int login_user(User users[], int count, const char *user_type) {
     int id;
     char password[20];
-    printf("Enter your %s ID: ", user_type);
+    printf("输入 %s 工号: ", user_type);
     scanf("%d", &id);
     getchar(); 
 
-    printf("Enter your %s password: ", user_type);
+    printf("输入 %s 密码: ", user_type);
     fgets(password, sizeof(password), stdin);
     strtok(password, "\n");
 
